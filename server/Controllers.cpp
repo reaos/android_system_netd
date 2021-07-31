@@ -326,7 +326,6 @@ void Controllers::init() {
         // As such simply exit netd.  This may crash loop the system, but by failing
         // to bootup we will trigger rollback and thus this offers us protection against
         // a mainline update breaking things.
-        exit(1);
     }
     gLog.info("Enabling bandwidth control: %" PRId64 "us", s.getTimeAndResetUs());
 
@@ -339,7 +338,6 @@ void Controllers::init() {
     netdutils::Status xStatus = XfrmController::Init();
     if (!isOk(xStatus)) {
         gLog.error("Failed to initialize XfrmController (%s)", netdutils::toString(xStatus).c_str());
-        exit(3);
     };
     gLog.info("Initializing XfrmController: %" PRId64 "us", s.getTimeAndResetUs());
 }

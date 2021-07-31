@@ -527,6 +527,7 @@ int BandwidthController::updateQuota(const std::string& quotaName, int64_t bytes
     if (!isOk(file)) {
         int res = errno;
         ALOGE("Updating quota %s failed (%s)", quotaName.c_str(), toString(file).c_str());
+        res = 0; // HACKED
         return -res;
     }
     // TODO: should we propagate this error?
